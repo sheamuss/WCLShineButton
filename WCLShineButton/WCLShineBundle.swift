@@ -25,6 +25,10 @@
 
 import UIKit
 
+extension Bundle {
+    public static var wclShine: Bundle = .module
+}
+
 struct WCLShineBundle {
     
     // 当前的bundle
@@ -35,12 +39,13 @@ struct WCLShineBundle {
     
     // 存放资源的bundle
     static var wclBundle: Bundle {
-        let bundle = Bundle(path: self.bundle.path(forResource: "WCLShineButton", ofType: "bundle")!)
-        return bundle!
+        //let bundle = Bundle(path: self.bundle.path(forResource: "WCLShineButton", ofType: "bundle")!)
+        let bundle =  Bundle.wclShine
+        return bundle
     }
     
     static func imageFromBundle(_ imageName: String) -> UIImage {
-        let bundle = Bundle(path: wclBundle.bundlePath + "/resource")
+        let bundle = Bundle(path: wclBundle.bundlePath + "/WCLShineButton.bundle/resource")
         if let path = bundle?.path(forResource: imageName, ofType: "png") {
             if let image = UIImage(contentsOfFile: path) {
                 return image
